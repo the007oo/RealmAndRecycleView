@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.LinearSnapHelper;
 import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -27,7 +28,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private RecyclerView recyclerView;
     private RecyclerView.Adapter adapter;
     private RealmChangeListener realmListener;
-
+    private  LinearSnapHelper snapHelper;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,6 +62,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         floatingActionMenu = (FloatingActionMenu) findViewById(R.id.float_menu);
         recyclerView = (RecyclerView) findViewById(R.id.recycle_view);
         fab1.setOnClickListener(this);
+        snapHelper = new LinearSnapHelper();
+        snapHelper.attachToRecyclerView(recyclerView);
     }
 
     @Override
